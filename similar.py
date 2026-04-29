@@ -203,6 +203,14 @@ class Similar:
                 if base_score < half_threshold:
                     continue
 
+                if base_score == 1:
+                    return PlateResult(
+                        corrected=candidate,
+                        label=p["label"],
+                        pattern=p["pattern"],
+                        score=base_score,
+                    )
+
                 corrected   = _correct(candidate, p["pattern"])
                 final_score = _score(corrected,  p["pattern"])
 
@@ -231,7 +239,7 @@ def build_romanian_decoder(threshold: float = 0.75) -> Similar:
     pattern_groups = {
         "standard": [
             ("LLDDLLL",  "county_standard"),
-            ("LLDDDLLL", "county_3digit"),
+            #("LLDDDLLL", "county_3digit"),
         ],
         "bucharest": [
             ("LDDDLLL", "bucharest_standard"),
