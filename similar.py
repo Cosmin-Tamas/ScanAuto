@@ -1,5 +1,19 @@
+
+"""
+
+Exemplu de utilizare
+-----
+>>> sim = build_romanian_decoder()
+>>> result = sim.predict_plate("AR01ABC")
+
+result este de tip: list[PlateResult]
+
+iar daca ai nevoie de nmarul corectat faci: result[i].corrected
+
+"""
+
+
 from __future__ import annotations
-import re
 from dataclasses import dataclass, field
 from rapidfuzz.distance import Levenshtein
 from test_cases import DATA
